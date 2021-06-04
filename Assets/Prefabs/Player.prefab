@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1722833999631880970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3157225670152377881}
+  m_Layer: 0
+  m_Name: InteractCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3157225670152377881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722833999631880970}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.577, y: 0.7999989, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4616044322146779751}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4616044321627357985
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,6 +75,7 @@ GameObject:
   - component: {fileID: 4616044322146779744}
   - component: {fileID: 4616044322146779745}
   - component: {fileID: 4616044322146779677}
+  - component: {fileID: 2315423572382581238}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -65,6 +96,7 @@ Transform:
   m_Children:
   - {fileID: 4616044323581329485}
   - {fileID: 4616044321627357984}
+  - {fileID: 3157225670152377881}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -220,6 +252,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   jumpPower: 250
+--- !u!114 &2315423572382581238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616044322146779749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccfb4ff6fca48a344b43eb24bb4cb1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionPoint: {fileID: 3157225670152377881}
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &4616044323581329490
 GameObject:
   m_ObjectHideFlags: 0

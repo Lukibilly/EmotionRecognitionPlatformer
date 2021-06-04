@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     [SerializeField] Transform groundCheck;
     [SerializeField] Transform groundCheckSide;
-    [SerializeField] float runSpeed = 40f;
+    public float runSpeed = 40f;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float jumpPower = 300;
 
