@@ -38,16 +38,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void GroundCheck(){
-        isGrounded = false;
         Collider2D[] collidersdown = Physics2D.OverlapCircleAll(groundCheck.position,groundCheckRadius,groundLayer);
-        if(collidersdown.Length>0)
-            isGrounded = true;
         Collider2D[] collidersleft = Physics2D.OverlapCircleAll(groundCheckLeft.position,groundCheckRadius,groundLayer);
-        if(collidersleft.Length>0)
-            isGrounded = true;
         Collider2D[] collidersright = Physics2D.OverlapCircleAll(groundCheckRight.position,groundCheckRadius,groundLayer);
-        if(collidersright.Length>0)
+        if(collidersdown.Length>0 ||collidersleft.Length>0 || collidersright.Length>0){
             isGrounded = true;
+        }else{
+            isGrounded = false;
+        }
+        
+            
     }
     void Move(float dir){
         if(isGrounded && jump){
