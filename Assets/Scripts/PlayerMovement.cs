@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     [SerializeField] Transform groundCheck;
+    [SerializeField] Transform groundCheckLeft;
+    [SerializeField] Transform groundCheckRight;
     [SerializeField] float runSpeed = 40f;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float jumpPower = 300;
@@ -37,8 +39,14 @@ public class PlayerMovement : MonoBehaviour
 
     void GroundCheck(){
         isGrounded = false;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position,groundCheckRadius,groundLayer);
-        if(colliders.Length>0)
+        Collider2D[] collidersdown = Physics2D.OverlapCircleAll(groundCheck.position,groundCheckRadius,groundLayer);
+        if(collidersdown.Length>0)
+            isGrounded = true;
+        Collider2D[] collidersleft = Physics2D.OverlapCircleAll(groundCheckLeft.position,groundCheckRadius,groundLayer);
+        if(collidersleft.Length>0)
+            isGrounded = true;
+        Collider2D[] collidersright = Physics2D.OverlapCircleAll(groundCheckRight.position,groundCheckRadius,groundLayer);
+        if(collidersright.Length>0)
             isGrounded = true;
     }
     void Move(float dir){
