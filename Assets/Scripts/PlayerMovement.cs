@@ -7,8 +7,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     [SerializeField] Transform groundCheck;
-    [SerializeField] Transform groundCheckLeft;
-    [SerializeField] Transform groundCheckRight;
+    [SerializeField] Transform groundCheckSide;
     [SerializeField] float runSpeed = 40f;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float jumpPower = 300;
@@ -38,10 +37,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void GroundCheck(){
-        Collider2D[] collidersdown = Physics2D.OverlapCircleAll(groundCheck.position,groundCheckRadius,groundLayer);
-        Collider2D[] collidersleft = Physics2D.OverlapCircleAll(groundCheckLeft.position,groundCheckRadius,groundLayer);
-        Collider2D[] collidersright = Physics2D.OverlapCircleAll(groundCheckRight.position,groundCheckRadius,groundLayer);
-        if(collidersdown.Length>0 ||collidersleft.Length>0 || collidersright.Length>0){
+        Collider2D[] collidersDown = Physics2D.OverlapCircleAll(groundCheck.position,groundCheckRadius,groundLayer);
+        Collider2D[] collidersSide = Physics2D.OverlapCircleAll(groundCheckSide.position,groundCheckRadius,groundLayer);
+        if(collidersDown.Length>0 || collidersSide.Length>0){
             isGrounded = true;
         }else{
             isGrounded = false;

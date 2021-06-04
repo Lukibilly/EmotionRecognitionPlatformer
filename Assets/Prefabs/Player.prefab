@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4616044321627357984}
   m_Layer: 0
-  m_Name: GroundCheckLeft
+  m_Name: GroundCheckSide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,6 @@ Transform:
   m_Children:
   - {fileID: 4616044323581329485}
   - {fileID: 4616044321627357984}
-  - {fileID: 4616044322785153269}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -215,43 +214,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 4616044323581329485}
-  groundCheckLeft: {fileID: 4616044321627357984}
-  groundCheckRight: {fileID: 4616044322785153269}
+  groundCheckSide: {fileID: 4616044321627357984}
   runSpeed: 20
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  jumpPower: 300
---- !u!1 &4616044322785153274
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4616044322785153269}
-  m_Layer: 0
-  m_Name: GroundCheckRight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4616044322785153269
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4616044322785153274}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5100002, y: 0.07, z: -11.773123}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4616044322146779751}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  jumpPower: 250
 --- !u!1 &4616044323581329490
 GameObject:
   m_ObjectHideFlags: 0
