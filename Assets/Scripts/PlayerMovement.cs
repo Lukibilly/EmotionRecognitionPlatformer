@@ -37,8 +37,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FixedUpdate(){
-        Move(horizontalMove);
         GroundCheck();
+        Move(horizontalMove);
+        jump = false;
     }
 
     void GroundCheck(){
@@ -55,8 +56,8 @@ public class PlayerMovement : MonoBehaviour
     void Move(float dir){
         if(isGrounded && jump){
             isGrounded = false;
-            jump = false;
-            rb.AddForce(new Vector2(0f,jumpPower));                        
+            rb.velocity = new Vector2(rb.velocity.x,jumpPower);
+            //rb.AddForce(new Vector2(0f,jumpPower));                        
         }
         #region MoveLeftRight
         float xvelocity = dir*runSpeed*Time.fixedDeltaTime;
