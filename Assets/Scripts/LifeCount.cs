@@ -9,7 +9,9 @@ public class LifeCount : MonoBehaviour
     public int livesRemaining;
 
     public void LoseLife(){
-        livesRemaining--;
-        lives[livesRemaining].enabled = false;
+        if(livesRemaining>0){
+            livesRemaining--;
+            lives[livesRemaining].enabled = false;
+        }
     }
 }

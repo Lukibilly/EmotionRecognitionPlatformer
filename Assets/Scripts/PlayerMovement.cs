@@ -29,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButton("Jump")){
             jump = true;
         }
+        /* LOSE LIFE SAMPLE ------------------------------
+        if(Input.GetKeyDown(KeyCode.Return)){            
+            gameObject.GetComponent<LifeCount>().LoseLife();
+        }
+        --------------------------------------------------*/
     }
 
     void FixedUpdate(){
@@ -51,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         if(isGrounded && jump){
             isGrounded = false;
             jump = false;
-            rb.AddForce(new Vector2(0f,jumpPower));            
+            rb.AddForce(new Vector2(0f,jumpPower));                        
         }
         #region MoveLeftRight
         float xvelocity = dir*runSpeed*Time.fixedDeltaTime;
