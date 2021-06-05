@@ -9,9 +9,16 @@ public class LifeCount : MonoBehaviour
     public int livesRemaining;
 
     public void LoseLife(){
+
         if(livesRemaining>0){
             livesRemaining--;
             lives[livesRemaining].enabled = false;
         }
+        if(livesRemaining==0){
+            foreach(Image live in lives){
+                live.enabled = false;
+            }
+        }
+
     }
 }
