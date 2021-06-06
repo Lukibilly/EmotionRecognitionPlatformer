@@ -11,7 +11,8 @@ public class LifeCount : MonoBehaviour
     public float damageBlinkTime;
     public SpriteRenderer spriteRenderer;
 
-    float lastDamageTime = -100;
+    public float noDamageTimeFrame = 1;
+    public float lastDamageTime = -100;
     
 
     void FixedUpdate(){
