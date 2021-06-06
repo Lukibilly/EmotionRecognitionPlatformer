@@ -7,8 +7,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     void Awake(){instance = this;}
 
-    public AudioClip sfx_attack, sfx_run;
-    public AudioClip music_start;
+    public AudioClip sfx_looselife;
+    //public AudioClip music_start;
 
     GameObject currentMusicObject;
     
@@ -16,11 +16,8 @@ public class AudioManager : MonoBehaviour
 
     public void playSFX(string sfxName){
         switch(sfxName){
-            case "sfx_attack":
-                sfxObjectCreation(sfx_attack);
-                break;
-            case "sfx_run":
-                sfxObjectCreation(sfx_run);
+            case "sfx_looselife":
+                sfxObjectCreation(sfx_looselife);
                 break;
             default:
                 break;
@@ -34,7 +31,7 @@ public class AudioManager : MonoBehaviour
     public void PlayMusic(string musicName){
         switch(musicName){
             case "music_start":
-                musicObjectCreation(music_start);
+                //musicObjectCreation(music_start);
                 break;
             default:
                 break;
