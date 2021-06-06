@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7342067808673556761}
   m_Layer: 0
   m_Name: SpikyBall
-  m_TagString: Untagged
+  m_TagString: SpikyBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3be05bd2567ef49b26600dd52cee6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noDamageTimeFrame: 1
   rebound: 15
 --- !u!58 &7342067808673556740
 CircleCollider2D:
