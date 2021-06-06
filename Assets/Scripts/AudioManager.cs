@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip sfx_attack, sfx_run;
     public AudioClip music_start;
 
-    public GameObject currentMusicObject;
+    GameObject currentMusicObject;
     
     public GameObject soundObject; //soundObject Prefab
 
@@ -41,9 +41,10 @@ public class AudioManager : MonoBehaviour
         }
     }
     void musicObjectCreation(AudioClip clip){
-        GameObject newObject = Instantiate(soundObject, transform);
-        newObject.GetComponent<AudioSource>().clip = clip;
-        newObject.GetComponent<AudioSource>().loop = true;
-        newObject.GetComponent<AudioSource>().Play();
+        if(currentMusicObject) Destroy(currentMusicObject);
+        currentMusicObject = Instantiate(soundObject, transform);
+        currentMusicObject.GetComponent<AudioSource>().clip = clip;
+        currentMusicObject.GetComponent<AudioSource>().loop = true;
+        currentMusicObject.GetComponent<AudioSource>().Play();
     }
 }
