@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2769235500567504065}
   - component: {fileID: 2769235500567504064}
-  - component: {fileID: 2769235500567504071}
   - component: {fileID: 2769235500567504070}
+  - component: {fileID: 6556940484063521349}
   m_Layer: 6
   m_Name: Spike
   m_TagString: Untagged
@@ -84,8 +84,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &2769235500567504071
-PolygonCollider2D:
+--- !u!114 &2769235500567504070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2769235500567504069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3be05bd2567ef49b26600dd52cee6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rebound: 4
+--- !u!61 &6556940484063521349
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,21 +120,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.0008993149, y: 0.24233496}
-      - {x: -0.48722124, y: -0.23978186}
-      - {x: 0.4838934, y: -0.2382617}
---- !u!114 &2769235500567504070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2769235500567504069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3be05bd2567ef49b26600dd52cee6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rebound: 4
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5}
+  m_EdgeRadius: 0
