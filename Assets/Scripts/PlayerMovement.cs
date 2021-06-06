@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool facingright = true;
     bool isGrounded = false;
+    bool canMove = true;
 
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
@@ -38,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate(){
         GroundCheck();
-        Move(horizontalMove);
+        if(canMove) Move(horizontalMove);
         jump = false;
     }
 
