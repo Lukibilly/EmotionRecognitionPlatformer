@@ -22,6 +22,7 @@ public class LifeCount : MonoBehaviour
     }
 
     public void LoseLife(){
+        if((lastDamageTime+noDamageTimeFrame)>=Time.time) return;
         AudioManager.instance.playSFX("sfx_looselife");
         lastDamageTime = Time.time;
         spriteRenderer.color = damageColor;

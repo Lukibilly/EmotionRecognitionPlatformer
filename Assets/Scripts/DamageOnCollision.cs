@@ -12,7 +12,7 @@ public class DamageOnCollision : MonoBehaviour
         if(collision.gameObject.tag == "Player"){
             float lastDamageTime = collision.gameObject.GetComponent<LifeCount>().lastDamageTime;
             float noDamageTimeFrame = collision.gameObject.GetComponent<LifeCount>().noDamageTimeFrame;
-            if((lastDamageTime+noDamageTimeFrame)<Time.time) collision.gameObject.GetComponent<LifeCount>().LoseLife();
+            collision.gameObject.GetComponent<LifeCount>().LoseLife();
 
             Vector3 otherPosition = collision.gameObject.GetComponent<Transform>().position;
             otherPosition = otherPosition.normalized;
