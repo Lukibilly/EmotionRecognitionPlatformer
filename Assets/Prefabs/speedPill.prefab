@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6890164378057452690}
   - component: {fileID: 6890164378057452689}
   m_Layer: 8
-  m_Name: pill
+  m_Name: speedPill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
