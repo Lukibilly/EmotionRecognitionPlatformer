@@ -8,11 +8,21 @@ public class InteractSystem : MonoBehaviour
     private const float detectionRadius = 0.2f;
     public LayerMask detectionLayer;
     Collider2D detectedObject;
+    public float pillSpeedBonus = 5;
+    public float pillSpeedtime = 5;
+    bool spedUp = false;
+    float lastSpeed;
 
     void Update()
     {
         if(DetectObject()){
             detectedObject.GetComponent<Interactable>().Interact();
+        }
+        if(spedUp){
+            if((Time.time-lastSpeed)>pillSpeedtime){
+                spedUp = false;
+                gameObject.GetComponent<PlayerMovement>().runSpeed-=pillSpeedBonus;
+            }
         }
     }
 
@@ -31,6 +41,8 @@ public class InteractSystem : MonoBehaviour
     }
 
     void speedUpPlayer(){
-        gameObject.GetComponent<PlayerMovement>().runSpeed+=10;
+        gameObject.GetComponent<PlayerMovement>().runSpeed+=pillSpeedBonus;
+        lastSpeed = Time.time;
+        spedUp = true;
     }
 }
