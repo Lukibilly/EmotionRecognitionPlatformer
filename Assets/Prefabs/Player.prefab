@@ -121,7 +121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5799240661371495428}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.38, y: -0.14, z: 0}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5799240660386233022}
@@ -265,7 +265,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  jumpPower: 15
+  jumpPower: 16
 --- !u!114 &5799240661371495548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +282,8 @@ MonoBehaviour:
   detectionLayer:
     serializedVersion: 2
     m_Bits: 256
+  pillSpeedBonus: 5
+  pillSpeedtime: 5
 --- !u!114 &5799240661371495431
 MonoBehaviour:
   m_ObjectHideFlags: 0

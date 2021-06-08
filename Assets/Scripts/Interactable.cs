@@ -13,10 +13,10 @@ public class Interactable : MonoBehaviour
         GetComponent<Collider2D>().isTrigger = true;
         gameObject.layer = 8;
     }
-
-    public void Interact(){        
-        FindObjectOfType<InteractSystem>().doInteraction(gameObject,this);                
+    private void OnTriggerEnter2D(Collider2D col){
+        if(col.gameObject.tag == "Player"){
+            FindObjectOfType<InteractSystem>().doInteraction(gameObject,this);
+        }
     }
-
     
 }

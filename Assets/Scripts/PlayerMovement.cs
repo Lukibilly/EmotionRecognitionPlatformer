@@ -76,4 +76,8 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("xVelocity",Mathf.Abs(rb.velocity.x));
         #endregion
     }
+    public void setCanMove(bool can){
+        if(can) canMove=true;
+        else canMove=false;
+    }
 }

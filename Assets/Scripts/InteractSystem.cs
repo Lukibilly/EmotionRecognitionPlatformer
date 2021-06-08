@@ -15,9 +15,9 @@ public class InteractSystem : MonoBehaviour
 
     void Update()
     {
-        if(DetectObject()){
+        /*if(DetectObject()){
             detectedObject.GetComponent<Interactable>().Interact();
-        }
+        }*/
         if(spedUp){
             if((Time.time-lastSpeed)>pillSpeedtime){
                 spedUp = false;
@@ -26,14 +26,14 @@ public class InteractSystem : MonoBehaviour
         }
     }
 
-    bool DetectObject(){
+    /*bool DetectObject(){
         Collider2D obj = Physics2D.OverlapCircle(detectionPoint.position, detectionRadius,detectionLayer);
 
         if(obj==null) return false;
 
         detectedObject = obj;
         return true;
-    }
+    }*/
     public void doInteraction(GameObject interactable,Interactable script){
         Debug.Log("I got picked up");
         if(script.type==Interactable.InteractionType.Speed) speedUpPlayer();
