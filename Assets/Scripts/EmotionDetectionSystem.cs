@@ -19,7 +19,7 @@ public class EmotionDetectionSystem : MonoBehaviour
         string ferpath = "C:\\Users\\631lh\\Documents\\UNI\\Neuro-Usability\\Facial-emotion-recognition\\dist\\live_cam_predict\\live_cam_predict.exe";
         ProcessStartInfo ferInfo = new ProcessStartInfo();
         ferInfo.CreateNoWindow = true;
-        ferInfo.UseShellExecute = false;
+        ferInfo.UseShellExecute = true;
         ferInfo.FileName = ferpath;
         ferInfo.WorkingDirectory = "C:\\Users\\631lh\\Documents\\UNI\\Neuro-Usability\\Facial-emotion-recognition\\dist\\live_cam_predict";
         fer = Process.Start(ferInfo);
