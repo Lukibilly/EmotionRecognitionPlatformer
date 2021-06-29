@@ -287,6 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6f042c586cb6043bd2d9d215b12556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emotion_check_frequency: 1
+  game_change_frequency: 10
 --- !u!4 &472473777
 Transform:
   m_ObjectHideFlags: 0
@@ -9955,75 +9957,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2976657031658988530, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657031658988530, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657031658988530, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 33.333336
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657031658988530, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657031658988530, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 60.000004
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657031658988530, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657031989038435, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657031989038435, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657031989038435, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 33.333336
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657031989038435, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657031989038435, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 103.33334
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657031989038435, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657032520978532, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657032520978532, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657032520978532, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 33.333336
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657032520978532, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657032520978532, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 16.666668
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2976657032520978532, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
