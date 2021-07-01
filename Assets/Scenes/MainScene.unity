@@ -287,8 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6f042c586cb6043bd2d9d215b12556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emotion_check_frequency: 1
-  game_change_frequency: 10
+  emotion_check_frequency: 0.5
+  game_change_frequency: 11
 --- !u!4 &472473777
 Transform:
   m_ObjectHideFlags: 0
@@ -9871,6 +9871,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2976657031612561191, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2976657031612561192, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -10042,7 +10046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5799240659836266950, guid: b4af78950fac7cc428ed1a15d08b8e89, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -5.45
       objectReference: {fileID: 0}
     - target: {fileID: 5799240659836266950, guid: b4af78950fac7cc428ed1a15d08b8e89, type: 3}
       propertyPath: m_LocalPosition.y
