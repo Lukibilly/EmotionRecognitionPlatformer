@@ -24,23 +24,21 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
     void Update()
-    {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+    {   if(GameController.instance.gameStarted){
+            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-        if(Input.GetButton("Jump")){
-            jump = true;
+            if(Input.GetButton("Jump")){
+                jump = true;
+            }
         }
-        /* LOSE LIFE SAMPLE ------------------------------
-        if(Input.GetKeyDown(KeyCode.Return)){            
-            gameObject.GetComponent<LifeCount>().LoseLife();
-        }
-        --------------------------------------------------*/
     }
 
     void FixedUpdate(){
-        GroundCheck();
-        if(canMove) Move(horizontalMove);
-        jump = false;
+        if(GameController.instance.gameStarted){
+            GroundCheck();
+            if(canMove) Move(horizontalMove);
+            jump = false;
+        }        
     }
 
     void GroundCheck(){

@@ -26,6 +26,7 @@ public class EmotionDetectionSystem : MonoBehaviour
             nextEmotionCheck=Time.time+emotion_check_frequency;
             string currentEmotion = getCurrentEmotion();
             if(currentEmotion!="NOEMOTION"){
+                if(GameController.instance.gameStarted==false) GameController.instance.startGame();
                 emotionList.Add(currentEmotion);
                 UnityEngine.Debug.Log(currentEmotion);
             }
@@ -59,7 +60,7 @@ public class EmotionDetectionSystem : MonoBehaviour
         fer = Process.Start(ferInfo);
     }
 
-    string getCurrentEmotion(){
+    public string getCurrentEmotion(){
         string emotionFilePath = folderPath + "\\emotion_file.txt";
         string currentEmotion = ReadLines(emotionFilePath).Last();
         return currentEmotion;

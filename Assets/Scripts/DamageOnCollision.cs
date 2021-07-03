@@ -17,8 +17,7 @@ public class DamageOnCollision : MonoBehaviour
             Vector3 otherPosition = collision.gameObject.GetComponent<Transform>().position;
             otherPosition = otherPosition.normalized;
             Vector3 direction = otherPosition-gameObject.transform.position;
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x*rebound,direction.y*rebound);          
-            
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x*rebound,direction.y*rebound);
         }
     }
 }

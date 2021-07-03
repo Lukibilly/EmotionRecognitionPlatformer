@@ -10,12 +10,15 @@ public class Countdown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeValue>0){
-            timeValue -= Time.deltaTime;
-        }else{
-            timeValue=0;
+        if(GameController.instance.gameStarted){
+            if(timeValue>0){
+                timeValue -= Time.deltaTime;
+            }else{
+                timeValue=0;
+            }
+            DisplayTime(timeValue);
         }
-        DisplayTime(timeValue);
+        
     }
     void DisplayTime(float timeToDisplay){
         if(timeToDisplay < 0){
