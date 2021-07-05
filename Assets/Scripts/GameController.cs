@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     public GameObject loadingPanel;
     public TextMeshProUGUI  loadingcontinue;
     public Button continuebutton;
-    private bool clickedContinue = false;
+    //private bool clickedContinue = false;
     private bool loadedModel = false;
     
     public void startGame(){
@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
         continuebutton.gameObject.SetActive(true);
     }
     public void clickContinue(){
-        clickedContinue = true;
+        //clickedContinue = true;
         if(loadedModel){
             loadingPanel.SetActive(false);
             gameStarted = true;

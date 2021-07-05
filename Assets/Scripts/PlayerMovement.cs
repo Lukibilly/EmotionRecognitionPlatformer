@@ -6,13 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator animator;
-    [SerializeField] Transform groundCheck;
-    [SerializeField] Transform groundCheckSide;
     public float runSpeed = 40f;
-    [SerializeField] LayerMask groundLayer;
     [SerializeField] float jumpPower = 300;
 
-    float groundCheckRadius = 0.2f;
     float horizontalMove = 0f;
     bool jump = false;
     bool facingright = true;
@@ -35,28 +31,19 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate(){
         if(GameController.instance.gameStarted){
-            GroundCheck();
+            isGrounded = GroundCheck();
             if(canMove) Move(horizontalMove);
             jump = false;
         }        
     }
 
-    void GroundCheck(){
-        Collider2D[] collidersDown = Physics2D.OverlapCircleAll(groundCheck.position,groundCheckRadius,groundLayer);
-        Collider2D[] collidersSide = Physics2D.OverlapCircleAll(groundCheckSide.position,groundCheckRadius,groundLayer);
-        if(collidersDown.Length>0 || collidersSide.Length>0){
-            isGrounded = true;
-        }else{
-            isGrounded = false;
-        }
-        
-            
+    private bool GroundCheck(){
+        return transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded;
     }
     void Move(float dir){
         if(isGrounded && jump){
             isGrounded = false;
-            rb.velocity = new Vector2(rb.velocity.x,jumpPower);
-            //rb.AddForce(new Vector2(0f,jumpPower));                        
+            rb.velocity = new Vector2(rb.velocity.x,jumpPower);                    
         }
         #region MoveLeftRight
         float xvelocity = dir*runSpeed*Time.fixedDeltaTime;

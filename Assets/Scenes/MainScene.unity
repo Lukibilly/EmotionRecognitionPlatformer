@@ -10226,6 +10226,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4727736316212354654, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
+      propertyPath: m_Name
+      value: LoadingScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727736316212354654, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4971585850631303492, guid: ee56e7faf25eef84ab52487a68a4299f, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
