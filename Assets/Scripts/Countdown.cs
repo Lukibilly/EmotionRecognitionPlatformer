@@ -7,6 +7,7 @@ public class Countdown : MonoBehaviour
 {
     public float timeValue = 300;
     public Text timeText;
+    public string timeString = "";
     // Update is called once per frame
     void Update()
     {
@@ -17,6 +18,7 @@ public class Countdown : MonoBehaviour
                 timeValue=0;
             }
             DisplayTime(timeValue);
+            if(timeValue==0) GameController.instance.finishGame(false);
         }
         
     }
@@ -28,7 +30,7 @@ public class Countdown : MonoBehaviour
         }
         float minutes = Mathf.FloorToInt(timeToDisplay/60);
         float seconds = Mathf.FloorToInt(timeToDisplay%60);
-
+        timeString = string.Format("{0:00}:{1:00}",minutes,seconds);
         timeText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
     }
 }

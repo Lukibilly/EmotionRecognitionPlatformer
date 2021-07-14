@@ -10,39 +10,34 @@ public class InteractSystem : MonoBehaviour
     Collider2D detectedObject;
     public float pillSpeedBonus = 5;
     public float pillSpeedtime = 5;
-    bool spedUp = false;
+    public bool spedUp = false;
     float lastSpeed;
+    List<GameObject> usedInteractables = new List<GameObject>();
 
     void Update()
     {
-        /*if(DetectObject()){
-            detectedObject.GetComponent<Interactable>().Interact();
-        }*/
         if(spedUp){
             if((Time.time-lastSpeed)>pillSpeedtime){
                 spedUp = false;
-                gameObject.GetComponent<PlayerMovement>().runSpeed-=pillSpeedBonus;
             }
         }
     }
 
-    /*bool DetectObject(){
-        Collider2D obj = Physics2D.OverlapCircle(detectionPoint.position, detectionRadius,detectionLayer);
-
-        if(obj==null) return false;
-
-        detectedObject = obj;
-        return true;
-    }*/
     public void doInteraction(GameObject interactable,Interactable script){
-        Debug.Log("I got picked up");
+        //Debug.Log("I got picked up");
         if(script.type==Interactable.InteractionType.Speed) speedUpPlayer();
-        Destroy(interactable);
+        interactable.transform.parent.gameObject.SetActive(false);
+        usedInteractables.Add(interactable.transform.parent.gameObject);
     }
 
     void speedUpPlayer(){
-        gameObject.GetComponent<PlayerMovement>().runSpeed+=pillSpeedBonus;
         lastSpeed = Time.time;
         spedUp = true;
+    }
+    public void resetInteractables(){
+        foreach(GameObject interactable in usedInteractables){
+            interactable.SetActive(true);
+        }
+        usedInteractables.Clear();
     }
 }

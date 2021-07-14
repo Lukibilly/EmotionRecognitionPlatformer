@@ -28,13 +28,15 @@ public class EnemySpawner : MonoBehaviour
         if(nextSpawnTime<Time.time || nextSpawnTime == -1){
             foreach(Transform child in transform){
                 var enemy = Instantiate(cannon,child.position,Quaternion.identity);
-                enemy.GetComponent<CannonEnemy>().setDirection(child.gameObject.GetComponent<SpawnDirection>().dir);
+                enemy.GetComponent<CannonEnemy>().setDirection(child.gameObject.GetComponent<SpawnInfo>().dir);
+                enemy.GetComponent<CannonEnemy>().setAliveTime(child.gameObject.GetComponent<SpawnInfo>().aliveTime);
+                enemy.GetComponent<CannonEnemy>().setShootFrequency(child.gameObject.GetComponent<SpawnInfo>().shootFrequency);
+                enemy.GetComponent<CannonEnemy>().setMoves(child.gameObject.GetComponent<SpawnInfo>().moves);
             }
             nextSpawnTime = Time.time+usedSpawnRate;
         }        
     }
     public void setEnemySpawnRate(SpawnRate newSpawnRate){
-        nextSpawnTime = Time.time;
         enemySpawnRate = newSpawnRate;
     }
 }

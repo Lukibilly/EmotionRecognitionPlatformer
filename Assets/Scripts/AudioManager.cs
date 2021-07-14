@@ -8,9 +8,14 @@ public class AudioManager : MonoBehaviour
     void Awake(){instance = this;}
 
     public AudioClip sfx_looselife;
-    //public AudioClip music_start;
+    public AudioClip defaultMusic;
+    public AudioClip happyMusic;
+    public AudioClip psytranceMusic;
+    public AudioClip holyMusic;
+    public AudioClip boringMusic;
 
     GameObject currentMusicObject;
+    string currentlyPlaying = "Nothing";
     
     public GameObject soundObject; //soundObject Prefab
 
@@ -29,19 +34,39 @@ public class AudioManager : MonoBehaviour
         newObject.GetComponent<AudioSource>().Play();
     }
     public void PlayMusic(string musicName){
+        if(currentlyPlaying.Equals(musicName)) return;
+        currentlyPlaying = musicName;
         switch(musicName){
-            case "music_start":
-                //musicObjectCreation(music_start);
+            case "default":                
+                musicObjectCreation(defaultMusic);                
+                break;
+            case "happy":                
+                musicObjectCreation(happyMusic);
+                break;
+            case "psytrance":                
+                musicObjectCreation(psytranceMusic);
+                break;
+            case "holy":                
+                musicObjectCreation(holyMusic);
+                break;
+            case "boring":                
+                musicObjectCreation(boringMusic);
                 break;
             default:
                 break;
         }
     }
+    public void startMusic(){
+        if(currentMusicObject) currentMusicObject.GetComponent<AudioSource>().Play();
+    }
     void musicObjectCreation(AudioClip clip){
-        if(currentMusicObject) Destroy(currentMusicObject);
+        bool newmusic = false;
+        if(currentMusicObject) currentMusicObject.AddComponent<FadeSound>();
+        else newmusic = true;
         currentMusicObject = Instantiate(soundObject, transform);
         currentMusicObject.GetComponent<AudioSource>().clip = clip;
         currentMusicObject.GetComponent<AudioSource>().loop = true;
-        currentMusicObject.GetComponent<AudioSource>().Play();
+        if(newmusic) currentMusicObject.GetComponent<AudioSource>().Play();
+        
     }
 }

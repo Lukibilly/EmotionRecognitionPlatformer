@@ -14,10 +14,10 @@ public class DamageOnCollision : MonoBehaviour
             float noDamageTimeFrame = collision.gameObject.GetComponent<LifeCount>().noDamageTimeFrame;
             collision.gameObject.GetComponent<LifeCount>().LoseLife();
 
-            Vector3 otherPosition = collision.gameObject.GetComponent<Transform>().position;
+           /* Vector3 otherPosition = collision.gameObject.GetComponent<Transform>().position;
             otherPosition = otherPosition.normalized;
             Vector3 direction = otherPosition-gameObject.transform.position;
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x*rebound,direction.y*rebound);
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x*rebound,direction.y*rebound);*/
         }
     }
 }

@@ -12,6 +12,7 @@ public class CannonEnemy : MonoBehaviour
     public float totalAliveTime = 10f;
     private float nextShot = -1;
     private float direction = -1;
+    private bool moves = true;
     
     private float aliveStart;
     void Start()
@@ -19,12 +20,11 @@ public class CannonEnemy : MonoBehaviour
         aliveStart = Time.time;
         Physics2D.IgnoreLayerCollision(7,9);
         Physics2D.IgnoreLayerCollision(8,9);
+        Physics2D.IgnoreLayerCollision(9,9);
         transform.localScale = new Vector3(direction,1,1);   
     }
     void Update()
     {
-        move();
-        
         if(nextShot==-1){
             nextShot=Time.time+shootFrequency;
         }else if(nextShot<Time.time){
@@ -37,7 +37,7 @@ public class CannonEnemy : MonoBehaviour
         
     }
     void FixedUpdate(){
-        move();
+        if(moves) move();
     }
     void move(){
         float xvel = movingSpeed*Time.fixedDeltaTime*direction;
@@ -51,5 +51,15 @@ public class CannonEnemy : MonoBehaviour
     public void setDirection(float direction){
         this.direction = direction;
         transform.localScale = new Vector3(direction,1,1);
+    }
+    public void setAliveTime(float aliveTime){
+        this.totalAliveTime = aliveTime;
+    }
+    public void setShootFrequency(float shootFrequency){
+        this.shootFrequency = shootFrequency;
+    }
+
+    public void setMoves(bool moves){
+        this.moves = moves;
     }
 }

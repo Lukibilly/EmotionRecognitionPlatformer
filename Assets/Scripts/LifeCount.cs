@@ -55,6 +55,8 @@ public class LifeCount : MonoBehaviour
         foreach(Image live in lives){
                 live.enabled = true;
         }
+        FindObjectOfType<InteractSystem>().resetInteractables();
+        GameController.instance.playerDeaths++;
         killingPlayer = false;        
     }
 }

@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator animator;
-    public float runSpeed = 40f;
-    [SerializeField] float jumpPower = 300;
+    public float runSpeed = 20f;
+    public float jumpPower = 300;
 
     float horizontalMove = 0f;
     bool jump = false;
@@ -32,9 +32,10 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate(){
         if(GameController.instance.gameStarted){
             isGrounded = GroundCheck();
-            if(canMove) Move(horizontalMove);
+            if(canMove) Move(horizontalMove);            
             jump = false;
-        }        
+        } 
+              
     }
 
     private bool GroundCheck(){
@@ -46,7 +47,10 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x,jumpPower);                    
         }
         #region MoveLeftRight
-        float xvelocity = dir*runSpeed*Time.fixedDeltaTime;
+        float speedup = 0;
+        var interactsystem = FindObjectOfType<InteractSystem>();
+        if(interactsystem.spedUp) speedup = interactsystem.pillSpeedBonus;
+        float xvelocity = dir*(runSpeed+speedup)*Time.fixedDeltaTime;
         Vector2 targetVelocity = new Vector2(xvelocity,rb.velocity.y);
         rb.velocity = targetVelocity;
 
@@ -63,6 +67,9 @@ public class PlayerMovement : MonoBehaviour
     }
     public void setCanMove(bool can){
         if(can) canMove=true;
-        else canMove=false;
+        else{
+            canMove=false;
+            rb.velocity = Vector2.zero;
+        }
     }
 }

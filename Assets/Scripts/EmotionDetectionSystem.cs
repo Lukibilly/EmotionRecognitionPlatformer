@@ -9,7 +9,13 @@ using System.Linq;
 public class EmotionDetectionSystem : MonoBehaviour
 {
     private Process fer;
-
+    private GameObject player;
+    private GameObject spawner;
+    public int neededNegative = 2;
+    public int neededPositive = 3;
+    public int normalRunSpeed = 20;
+    public int mediumRunSpeed = 23;
+    public int highRunSpeed = 26;
     private double nextEmotionCheck = 1;
     private double nextGameChange = 15;
     public double emotion_check_frequency = 0.5;
@@ -20,6 +26,10 @@ public class EmotionDetectionSystem : MonoBehaviour
 
     private string folderPath;
 
+    private bool psytrancemode;
+    private bool holymode;
+    public float bonusJumpPower = 3;
+
     void Update(){
 
         if(Time.time>=nextEmotionCheck){
@@ -28,19 +38,20 @@ public class EmotionDetectionSystem : MonoBehaviour
             if(currentEmotion!="NOEMOTION"){
                 if(GameController.instance.gameStarted==false) GameController.instance.startGame();
                 emotionList.Add(currentEmotion);
-                UnityEngine.Debug.Log(currentEmotion);
             }
         }
 
         if(Time.time>=nextGameChange){
             nextGameChange=Time.time+game_change_frequency;
-            if(getCurrentEmotion()!="NOEMOTION") changeGame();
+            if(getCurrentEmotion()!="NOEMOTION" && GameController.instance.gameStarted) changeGame();
         }        
     }
 
     void Start()
     {
         startFer();
+        player = GameObject.Find("Player");
+        spawner = GameObject.Find("EnemySpawner");
     }
 
     void OnApplicationQuit(){        
@@ -67,51 +78,102 @@ public class EmotionDetectionSystem : MonoBehaviour
     }
 
     void changeGame(){
-        UnityEngine.Debug.Log("I change the game according to last emotion");
+        string logstring = "Changing game:";
+        
         // GET CURRENT EMOTION FROM LAST ELEMENTS IN LIST
-        string currentEmotion = "Positive"; // THIS IS JUST A TEMPLATE
-        // IF ITS A NEW EMOTION
-        if(lastEmotionChange.Equals(currentEmotion))applyRegularChanges(currentEmotion);
-        // IF LASTEMOTION = CURRENTEMOTION
-        else applyStagnateChanges(currentEmotion);
+        string currentAvgEmotion = avgEmotion(); // THIS IS JUST A TEMPLATE
+        logstring += currentAvgEmotion;
+        //UnityEngine.Debug.Log(logstring);
+        
+        
+        // IF ITS SAME EMOTION TWICE IN A ROW
+        if(lastEmotionChange.Equals(currentAvgEmotion)) applyStagnateChanges(currentAvgEmotion);
+        else applyRegularChanges(currentAvgEmotion);
+        
         // UPDATE LASTEMOTION
-        lastEmotionChange = currentEmotion;
+        lastEmotionChange = currentAvgEmotion;
     }
 
-    void applyRegularChanges(string currentEmotion){        
+    void applyRegularChanges(string currentAvgEmotion){
         // NEUTRAL
-            // playerVelocitylevel = NORMAL
-            // fallingEnemyRate = NORMAL (falling enemies die when they fall in hole)
-            // music = DEFAULT
+        if(psytrancemode){
+            GameController.instance.resetColor();
+            psytrancemode = false;
+        }
+        if(holymode){
+            player.GetComponent<PlayerMovement>().jumpPower -= bonusJumpPower;
+            holymode = false;
+        }
+        player.GetComponent<PlayerMovement>().runSpeed = normalRunSpeed;
+        if(currentAvgEmotion=="Negative"){
+            GameController.instance.displayMessage("So you can't handle my world...",8);
+            spawner.GetComponent<EnemySpawner>().setEnemySpawnRate(EnemySpawner.SpawnRate.NONE);
+            player.GetComponent<PlayerMovement>().runSpeed = normalRunSpeed;
+            GameController.instance.displayImage("boring",8);
+            AudioManager.instance.PlayMusic("boring");            
+        }
+        if(currentAvgEmotion=="Neutral"){
+            player.GetComponent<PlayerMovement>().runSpeed = normalRunSpeed;
+            spawner.GetComponent<EnemySpawner>().setEnemySpawnRate(EnemySpawner.SpawnRate.NORMAL);
+            AudioManager.instance.PlayMusic("default");
+        }        
         // POSITIVE
-            // playerVelocitylevel = HIGH
-            // fallingEnemyRate = HIGH // (falling enemies die when they fall in hole)
-            // music = CREEPY/TENSE
-    }
-    void applyStagnateChanges(string currentEmotion){
-        // NEUTRAL -> NEUTRAL ------ MAYBE DIFFERENT OPTIONS CHOSEN AT RANDOM
-            // message: What's up with that lousy face? Are you not enjoying this?
-            // change player form to be tiny
-            // playerVelocitylevel = MEDIUM-HIGH
-            // music = WEIRD WTF
-        // POSITIVE -> POSITIVE
-            // message: Are you mocking the gods? Face your punishment.
-            // fallingEnemyRate = EXTREME
-            // music = HARD PSYTRANCE
-            // background+player color = red
-            // enemy color = black
-            // playerVelocitylevel = HIGH (ALREADY IN REGULAR CHANGES)        
-    }
-    public static IEnumerable<string> ReadLines(string path)
-{
-    using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 0x1000, FileOptions.SequentialScan))
-    using (var sr = new StreamReader(fs))
-    {
-        string line;
-        while ((line = sr.ReadLine()) != null)
-        {
-            yield return line;
+        if(currentAvgEmotion=="Positive"){
+            player.GetComponent<PlayerMovement>().runSpeed = mediumRunSpeed;
+            spawner.GetComponent<EnemySpawner>().setEnemySpawnRate(EnemySpawner.SpawnRate.HIGH);
+            AudioManager.instance.PlayMusic("happy");
         }
     }
-}
+
+    void applyStagnateChanges(string currentAvgEmotion){
+        if(currentAvgEmotion == "Neutral"){
+            if(!psytrancemode){
+                GameController.instance.displayMessage("Is my world boring to you? Face Gods Wrath!",10);
+                spawner.GetComponent<EnemySpawner>().setEnemySpawnRate(EnemySpawner.SpawnRate.EXTREME);
+                player.GetComponent<PlayerMovement>().runSpeed = highRunSpeed;
+                GameController.instance.changeColor();
+                AudioManager.instance.PlayMusic("psytrance");
+                psytrancemode = true;
+            }
+        }
+        if(currentAvgEmotion == "Positive"){
+            if(!holymode){
+                GameController.instance.displayMessage("Have this power to enjoy more of my world!",10);
+                player.GetComponent<PlayerMovement>().runSpeed = highRunSpeed;
+                player.GetComponent<PlayerMovement>().jumpPower += bonusJumpPower;
+                AudioManager.instance.PlayMusic("holy");
+                holymode = true;
+            }            
+        }        
+    }
+
+    private string avgEmotion(){
+        int numElements = Math.Min(emotionList.Count(),20);
+        int negativeCount = 0;
+        int neutralCount = 0;
+        int positiveCount = 0;
+        for(int i=0;i<numElements;i++){
+            if(emotionList[emotionList.Count()-1-i] == "positive") positiveCount++;
+            if(emotionList[emotionList.Count()-1-i] == "negative") negativeCount++;
+            if(emotionList[emotionList.Count()-1-i] == "neutral") neutralCount++;
+        }
+        if(negativeCount>=neededNegative) return "Negative";
+        if(positiveCount>=neededPositive) return "Positive";        
+        return "Neutral";
+    }
+    public static IEnumerable<string> ReadLines(string path)
+    {
+        using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 0x1000, FileOptions.SequentialScan))
+        using (var sr = new StreamReader(fs))
+        {
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                yield return line;
+            }
+        }
+    }
+    public void killfer(){
+        fer.Kill();
+    }
 }
